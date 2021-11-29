@@ -6,4 +6,3 @@ for k, v in per_cent.items():
 print('Максимальная сумма, которую вы можете заработать - ' + str(max(per_cent.values())))
 # Для консольки
 # program_exit = input("Press enter to exit ")
-# comment
