@@ -43,7 +43,7 @@ for m in range(tc):
 
 # Цикл сортирует цены по возрасту и выводит сообщение (enumerate/index - для подсчета итераций)
 for index, (k, v) in enumerate(ac.items()):
-    count_people = ac[k]  # Считаем людей одинакового возраста
+    count_people = ac[k]  # Количество людей одинакового возраста
     if k < 18:     # Если возраст < 18 - бесплатно * на значение количества посетителей
         ac[k] = price_child * ac[k]
     elif k >= 25:  # Если возраст >=25 - 1390 руб. * на значение количества посетителей
@@ -56,5 +56,5 @@ for index, (k, v) in enumerate(ac.items()):
 # Итоговая сумма с учетом или без учета скидки
 print(f"Сумма заказа с учетом скидки {disc}% - " + str(sum(ac.values()) - sum(ac.values()) * disc / 100) + " руб.")
 
-# Для консоли
+# Для консольки
 # program_exit = input("Press enter to exit ")
