@@ -29,7 +29,10 @@ for m in range(tc):
         try:
             age = int(input(f"Введите возраст {m + 1} посетителя: "))
             if age > 0:
-                ac[age] = price_young
+                if age in ac.keys():  # Условие для посетителей с одинаковым возрастом
+                    ac[age] += 1  # (если уже такой был - ключ остается таким же; значение = значение + 1)
+                else:
+                    ac[age] = 1
             else:
                 print("Неверное значение")
                 continue
@@ -40,14 +43,18 @@ for m in range(tc):
 
 # Цикл сортирует цены по возрасту и выводит сообщение (enumerate/index - для подсчета итераций)
 for index, (k, v) in enumerate(ac.items()):
-    if k < 18:  # Если возраст < 18 - бесплатно
-        ac[k] = price_child
-    elif k >= 25:  # Если возраст >=25 - 1390 руб.
-        ac[k] = price_old
-    print(f"Цена для {index + 1} посетителя возрастом {k} лет - {ac.get(k)} руб.")
+    count_people = ac[k]  # Считаем людей одинакового возраста
+    if k < 18:     # Если возраст < 18 - бесплатно * на значение количества посетителей
+        ac[k] = price_child * ac[k]
+    elif k >= 25:  # Если возраст >=25 - 1390 руб. * на значение количества посетителей
+        ac[k] = price_old * ac[k]
+    else:          # Иначе -  990 руб. * на значение количества посетителей
+        ac[k] = price_young * ac[k]
+    end = "ей" if count_people % 100 == 11 or count_people % 10 != 1 else "я"  # Если число заканчивается на 11 или не на 1 - окончание "ей"
+    print(f"Цена для {count_people} посетител{end} возрастом {k} лет - {ac.get(k)} руб.")
 
 # Итоговая сумма с учетом или без учета скидки
 print(f"Сумма заказа с учетом скидки {disc}% - " + str(sum(ac.values()) - sum(ac.values()) * disc / 100) + " руб.")
 
-# Для консольки
+# Для консоли
 # program_exit = input("Press enter to exit ")
