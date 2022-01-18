@@ -22,7 +22,7 @@ class FromPetHouse:
             if (i["species"]["code"]) in typeList:
                 self.__result_list.append(
                     {"type": i["species"]["name"], "name": i["name"], "gender": i["gender"]["name"], "age": i["age"]})
-        
+
         # Функция изменения атрибутов питомцев. Если указан атрибут - меняем, иначе оставляем как было
     def setValue(self, pet_id=0, name=None, age=None, gender=None, pet_type=None):
         self.__result_list[pet_id]["name"] = name if name else self.__result_list[pet_id]["name"]
@@ -40,3 +40,7 @@ class FromPetHouse:
                 text_age = "года"
             print(i["name"] + " (" + i["type"] + ")" + ", " + str(i["age"]) + f" {text_age} - " +
                   i["gender"] + f". pet_id = {self.__result_list.index(i)}")
+
+    # При необходимости удаления из памяти до окончания работы интерпретатора
+    # def __del__(self):
+    #     print('Список питомцев удален')
