@@ -29,9 +29,9 @@ class FromPetHouse:
         self.__result_list[pet_id]["age"] = age if age else self.__result_list[pet_id]["age"]
         self.__result_list[pet_id]["gender"] = gender if gender else self.__result_list[pet_id]["gender"]
         self.__result_list[pet_id]["type"] = pet_type if pet_type else self.__result_list[pet_id]["type"]
-
-    def showPets(self):
+        
         # Цикл вывода информации из result_list
+    def showPets(self):
         for i in self.__result_list:
             text_age = "лет"
             if i["age"] % 10 == 1:
