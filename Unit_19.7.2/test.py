@@ -1,6 +1,9 @@
 from api import PetFriends
+from typing import Union
 import settings as s
 
 pf = PetFriends()
 _, key = pf.get_api_key(s.email, s.password)
-_, add_pet = pf.add_pet('Котэ', 'cat', '22', key['key'], 'tests/images/cat.jpg')
+_, my_pets = pf.get_pets(key['key'], 'my_pets')
+_, delete = pf.del_pet(key['key'], my_pets['pets'][0]['id'])
+

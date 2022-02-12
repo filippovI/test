@@ -65,7 +65,7 @@ class PetFriends:
         return PetFriends.__get_result(res)
 
     @staticmethod
-    def __get_result(res) -> [int, str | dict]:
+    def __get_result(res: rq.models.Response) -> tuple[int, str | dict]:
         """Метод для возврата результатов методов"""
 
         try:
