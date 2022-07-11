@@ -1,16 +1,26 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import pytest
+from pytest import fixture
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+@fixture()
+def request_fixture(request):
+    print(request.fixturename)
+    print(request.scope)
+    print(request.function.__name__)
+    print(request.cls)
+    print(request.module.__name__)
+    print(request.fspath)
+    if request.cls:
+        return f"\n У теста {request.function.__name__} класс есть\n"
+    else:
+        return f"\n У теста {request.function.__name__} класса нет\n"
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def test_request_1(request_fixture):
+    print(request_fixture)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+class TestClassRequest:
+
+    def test_request_2(self, request_fixture):
+        print(request_fixture)
