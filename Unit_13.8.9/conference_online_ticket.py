@@ -57,4 +57,4 @@ for k, v in ac.items():
 print(f"Сумма заказа с учетом скидки {disc}% - " + str(sum(ac.values()) - sum(ac.values()) * disc / 100) + " руб.")
 
 # Для консоли
-# program_exit = input("Press enter to exit ")
+program_exit = input("Press enter to exit ")
